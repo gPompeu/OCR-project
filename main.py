@@ -24,13 +24,16 @@ def main():
     if file_path:
         images = convert_from_path(file_path)
         
-        output_text = ''
+        # output_text = ''
 
-        for image in images:
-            output_text += pytesseract.image_to_string(image)
+        # for image in images:
+        #     output_text += pytesseract.image_to_string(image)
 
-        with open('texto_do_pdf.txt', 'w') as output_file:
-            output_file.write(output_text)
+        # print(output_text)
+        # with open('texto_do_pdf.txt', 'w') as output_file:
+            # output_file.write(output_text)
+        print(pytesseract.image_to_string(images[0]))
+        input("\n[Enter] para fechar")
 
 if __name__ == '__main__':
     main()
