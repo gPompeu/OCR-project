@@ -127,3 +127,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+poppler/
+tesseract/
+dir_teste_input/
