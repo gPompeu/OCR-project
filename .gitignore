@@ -131,3 +131,5 @@ dmypy.json
 poppler/
 tesseract/
 dir_teste_input/
+scanner_teste/
+installer/
