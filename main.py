@@ -10,6 +10,8 @@ from pdf2image import convert_from_path, pdfinfo_from_path
 from pdf2image.exceptions import (PDFInfoNotInstalledError, PDFPageCountError,
                                   PDFSyntaxError)
 
+import image_preprocessing
+
 
 def main():
 
@@ -32,8 +34,8 @@ def constantly_check_folder_for_pdf_files(selected_folder_path):
             selected_folder_path)
 
         if path_list_of_pdf_files_in_folder:
-            os.system('cls')
-            print('Processando arquivos...')
+            # os.system('cls')
+            # print('Processando arquivos...')
 
             for pdf_file_path in path_list_of_pdf_files_in_folder:
 
@@ -44,9 +46,9 @@ def constantly_check_folder_for_pdf_files(selected_folder_path):
                          extracted_numbers_list, not_found_list)
 
                 move_pdf(pdf_file_path, selected_folder_path)
-        else:
-            os.system('cls')
-            print('Aguardando arquivos...')
+        # else:
+            # os.system('cls')
+            # print('Aguardando arquivos...')
 
         sleep(1)
 
@@ -58,9 +60,10 @@ def move_pdf(pdf_file_path, folder_path):
 
     if not os.path.exists(destination_folder):
         os.mkdir(destination_folder)
-    
+
     try:
-        os.replace(pdf_file_path, os.path.join(destination_folder, pdf_filename))
+        os.replace(pdf_file_path, os.path.join(
+            destination_folder, pdf_filename))
     finally:
         return
 
@@ -92,6 +95,10 @@ def parse_pdf(pdf_file_path):
             return extracted_numbers, not_found
 
         for index, image in enumerate(images):
+
+            print(image)
+
+            image_preprocessing.ImagePreprocessing(image)
 
             image_text = pytesseract.image_to_string(image)
 
