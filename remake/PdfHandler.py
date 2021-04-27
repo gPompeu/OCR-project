@@ -31,9 +31,8 @@ def parsePdfFiles(pathList, userFolder):
             currentPdf.output(userFolder)
             FolderHandler.move(pdfFilePath, userFolder, 'Arquivos processados')
 
-    else:
-        os.system('cls')
-        print('Aguardando arquivos...')
+    os.system('cls')
+    print('Aguardando arquivos...')
 
 
 class Pdf:
